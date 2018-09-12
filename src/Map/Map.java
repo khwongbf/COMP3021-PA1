@@ -58,6 +58,8 @@ public class Map {
                 } else if (Character.isLowerCase(rep[i][j])){
                     nextCrate = new Crate(i,j,rep[i][j]);
                     crates.add(nextCrate);
+                } else {
+                    throw new UnknownElementException("");
                 }
             }
         }
