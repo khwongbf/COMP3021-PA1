@@ -59,14 +59,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Map/Map.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-507">
-              <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
+            <state relative-caret-position="153">
+              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
               <folding>
                 <element signature="docComment;method#initialize#0;class#Map#0" expanded="true" />
-                <element signature="method#initialize#0;class#Map#0" expanded="true" />
                 <element signature="docComment;method#movePlayer#0;class#Map#0" expanded="true" />
                 <element signature="method#movePlayer#0;class#Map#0" expanded="true" />
                 <element signature="method#moveCrate#0;class#Map#0" expanded="true" />
@@ -81,7 +80,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/Map/MapTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
+            <state relative-caret-position="342">
               <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -104,16 +103,18 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+            <state relative-caret-position="357">
+              <caret line="74" column="14" lean-forward="true" selection-start-line="74" selection-start-column="14" selection-end-line="74" selection-end-column="14" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="method#loadMap#0;class#Game#0" expanded="true" />
                 <element signature="docComment;method#isWin#0;class#Game#0" expanded="true" />
                 <element signature="method#isWin#0;class#Game#0" expanded="true" />
                 <element signature="method#isDeadlocked#0;class#Game#0" expanded="true" />
+                <element signature="method#display#0;class#Game#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -214,6 +215,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -251,8 +254,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -359,7 +360,7 @@
     <frame x="-7" y="-7" width="1295" height="697" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26596606" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2700081" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -401,14 +402,14 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="-2519" />
+      </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor />
           <second_editor />
         </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="-2519" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/Map/Occupiable/TileTestTest.java" />
@@ -519,7 +520,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/Map/MapTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
+        <state relative-caret-position="342">
           <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -531,13 +532,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+        <state relative-caret-position="357">
+          <caret line="74" column="14" lean-forward="true" selection-start-line="74" selection-start-column="14" selection-end-line="74" selection-end-column="14" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#loadMap#0;class#Game#0" expanded="true" />
             <element signature="docComment;method#isWin#0;class#Game#0" expanded="true" />
             <element signature="method#isWin#0;class#Game#0" expanded="true" />
             <element signature="method#isDeadlocked#0;class#Game#0" expanded="true" />
+            <element signature="method#display#0;class#Game#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -561,11 +564,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Map/Map.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-507">
-          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
+        <state relative-caret-position="153">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
           <folding>
             <element signature="docComment;method#initialize#0;class#Map#0" expanded="true" />
-            <element signature="method#initialize#0;class#Map#0" expanded="true" />
             <element signature="docComment;method#movePlayer#0;class#Map#0" expanded="true" />
             <element signature="method#movePlayer#0;class#Map#0" expanded="true" />
             <element signature="method#moveCrate#0;class#Map#0" expanded="true" />
