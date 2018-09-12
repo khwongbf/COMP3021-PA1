@@ -34,17 +34,17 @@ public class Map {
      */
     public void initialize(int rows, int cols, char[][] rep) throws InvalidMapException {
         //TODO
-        cells = new Cells[rows][cols];
+        cells = new Cell[rows][cols];
         Crate nextCrate;
         Character currentChar = new Character(rep[0][0]);
         boolean playerInitialized = false;
         for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < col; j++) {
+            for (int j = 0; j < cols; j++) {
                 currentChar = rep[i][j];
                 if (currentChar.equals('#')){
-                    cell[i][j] = new Wall();
+                    cells[i][j] = new Wall();
                 } else if (currentChar.equals('.')){
-                    cell[i][j] = new Tile();
+                    cells[i][j] = new Tile();
                 } else if (currentChar.equals('@')){
                     if (!playerInitialized){
                         player = new Player(i,j);
@@ -53,8 +53,8 @@ public class Map {
                         throw new InvalidNumberOfPlayersException("");
                     }
                 } else if (Character.isUpperCase(rep[i][j])){
-                    cell[i][j] = new DestTile(rep[i][j]);
-                    destTiles.add(cell[i][j]);
+                    cells[i][j] = new DestTile(rep[i][j]);
+                    destTiles.add(cells[i][j]);
                 } else if (Character.isLowerCase(rep[i][j])){
                     nextCrate = new Crate(i,j,rep[i][j]);
                     crates.add(nextCrate);
