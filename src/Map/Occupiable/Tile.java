@@ -35,6 +35,6 @@ public class Tile extends Cell implements Occupiable {
     @Override
     public char getRepresentation() {
         //TODO
-        return ' '; // You may also modify this line.
+        return '.'; // You may also modify this line.
     }
 }

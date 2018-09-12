@@ -10,6 +10,7 @@ import Map.Occupiable.Occupiable;
 import Map.Occupiable.Tile;
 
 import java.util.ArrayList;
+import java.lang.Object;
 
 /**
  * A class holding a the 2D array of cells, representing the world map
@@ -33,7 +34,33 @@ public class Map {
      */
     public void initialize(int rows, int cols, char[][] rep) throws InvalidMapException {
         //TODO
-
+        cells = new Cells[rows][cols];
+        Crate nextCrate;
+        Character currentChar = new Character(rep[0][0]);
+        boolean playerInitialized = false;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < col; j++) {
+                currentChar = rep[i][j];
+                if (currentChar.equals('#')){
+                    cell[i][j] = new Wall();
+                } else if (currentChar.equals('.')){
+                    cell[i][j] = new Tile();
+                } else if (currentChar.equals('@')){
+                    if (!playerInitialized){
+                        player = new Player(i,j);
+                        playerInitialized = true;
+                    } else{
+                        throw new InvalidNumberOfPlayersException("");
+                    }
+                } else if (Character.isUpperCase(rep[i][j])){
+                    cell[i][j] = new DestTile(rep[i][j]);
+                    destTiles.add(cell[i][j]);
+                } else if (Character.isLowerCase(rep[i][j])){
+                    nextCrate = new Crate(i,j,rep[i][j]);
+                    crates.add(nextCrate);
+                }
+            }
+        }
     }
 
     public ArrayList<DestTile> getDestTiles() {
