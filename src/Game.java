@@ -59,7 +59,12 @@ public class Game {
      */
     public void display() {
         //TODO
-
+        for (var cR: m.getCells()){
+            for (var cC: cR){
+                System.out.print(cC.getRepresentation());
+            }
+            System.out.println();
+        }
     }
 
     /**
