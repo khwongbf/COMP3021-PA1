@@ -4,6 +4,7 @@ import Exceptions.InvalidMapException;
 import Exceptions.InvalidNumberOfPlayersException;
 import Exceptions.UnknownElementException;
 import Map.Occupant.Crate;
+import Map.Occupant.Occupant;
 import Map.Occupant.Player;
 import Map.Occupiable.DestTile;
 import Map.Occupiable.Occupiable;
@@ -47,6 +48,8 @@ public class Map {
                     if (!playerInitialized){
                         player = new Player(i,j);
                         playerInitialized = true;
+                        cells[i][j] = new Tile();
+                        ((Tile) cells[i][j]).setOccupant(player);
                     } else{
                         throw new InvalidNumberOfPlayersException("");
                     }
@@ -56,6 +59,8 @@ public class Map {
                 } else if (Character.isLowerCase(rep[i][j])){
                     nextCrate = new Crate(i,j,rep[i][j]);
                     crates.add(nextCrate);
+                    cells[i][j] = new Tile();
+                    ((Tile) cells[i][j]).setOccupant(nextCrate);
                 } else {
                     throw new UnknownElementException("");
                 }
@@ -85,7 +90,90 @@ public class Map {
      */
     public boolean movePlayer(Direction d) {
         //TODO
-        return false; // You may also modify this line.
+        boolean movable = true;
+        switch (d){
+            case UP:
+                if (isOccupiableAndNotOccupiedWithCrate(player.getR()-1, player.getC())){
+                    ((Tile)getCells()[player.getR()][player.getC()]).removeOccupant();
+                    player.setPos(player.getR()-1,player.getC());
+                    ((Tile)getCells()[player.getR()][player.getC()]).setOccupant(player);
+                } else{
+                    for (var crate: getCrates()){
+                        if (crate.getR() == player.getR()-1 && crate.getC() == player.getC()){
+                            if(moveCrate(crate,d)){
+                                ((Tile)getCells()[player.getR()][player.getC()]).removeOccupant();
+                                player.setPos(player.getR()-1,player.getC());
+                                ((Tile)getCells()[player.getR()][player.getC()]).setOccupant(player);
+                            } else{
+                                movable = false;
+                            }
+                            break;
+                        }
+                    }
+                }
+                break;
+            case DOWN:
+                if (isOccupiableAndNotOccupiedWithCrate(player.getR()+1, player.getC())){
+                    ((Tile)getCells()[player.getR()][player.getC()]).removeOccupant();
+                    player.setPos(player.getR()+1,player.getC());
+                    ((Tile)getCells()[player.getR()][player.getC()]).setOccupant(player);
+                } else{
+                    for (var crate: getCrates()){
+                        if (crate.getR() == player.getR()+1 && crate.getC() == player.getC()){
+                            if(moveCrate(crate,d)){
+                                ((Tile)getCells()[player.getR()][player.getC()]).removeOccupant();
+                                player.setPos(player.getR()+1, player.getC());
+                                ((Tile)getCells()[player.getR()][player.getC()]).setOccupant(player);
+                            } else{
+                                movable = false;
+                            }
+                            break;
+                        }
+                    }
+                }
+                break;
+            case LEFT:
+                if (isOccupiableAndNotOccupiedWithCrate(player.getR(), player.getC()-1)){
+                    ((Tile)getCells()[player.getR()][player.getC()]).removeOccupant();
+                    player.setPos(player.getR(),player.getC()-1);
+                    ((Tile)getCells()[player.getR()][player.getC()]).setOccupant(player);
+                } else{
+                    for (var crate: getCrates()){
+                        if (crate.getR() == player.getR() && crate.getC() == player.getC() -1){
+                            if(moveCrate(crate,d)){
+                                ((Tile)getCells()[player.getR()][player.getC()]).removeOccupant();
+                                player.setPos(player.getR(), player.getC()-1);
+                                ((Tile)getCells()[player.getR()][player.getC()]).setOccupant(player);
+                            } else{
+                                movable = false;
+                            }
+                            break;
+                        }
+                    }
+                }
+                break;
+            case RIGHT:
+                if (isOccupiableAndNotOccupiedWithCrate(player.getR(), player.getC()+1)){
+                    ((Tile)getCells()[player.getR()][player.getC()]).removeOccupant();
+                    player.setPos(player.getR(),player.getC()+1);
+                    ((Tile)getCells()[player.getR()][player.getC()]).setOccupant(player);
+                } else{
+                    for (var crate: getCrates()){
+                        if (crate.getR() == player.getR() && crate.getC() == player.getC() +1){
+                            if(moveCrate(crate,d)){
+                                ((Tile)getCells()[player.getR()][player.getC()]).removeOccupant();
+                                player.setPos(player.getR(), player.getC()+1);
+                                ((Tile)getCells()[player.getR()][player.getC()]).setOccupant(player);
+                            } else{
+                                movable = false;
+                            }
+                            break;
+                        }
+                    }
+                }
+                break;
+        }
+        return movable; // You may also modify this line.
     }
 
     /**
@@ -98,7 +186,45 @@ public class Map {
      */
     private boolean moveCrate(Crate c, Direction d) {
         //TODO
-        return false; // You may also modify this line.
+        switch (d){
+            case UP:
+                if (isOccupiableAndNotOccupiedWithCrate(c.getR()-1, c.getC())){
+                    ((Tile)getCells()[c.getR()][c.getC()]).removeOccupant();
+                    c.setPos(c.getR()-1, c.getC());
+                    ((Tile)getCells()[c.getR()][c.getC()]).setOccupant(c);
+                } else {
+                    return false;
+                }
+                break;
+            case DOWN:
+                if (isOccupiableAndNotOccupiedWithCrate(c.getR()+1, c.getC())){
+                    ((Tile)getCells()[c.getR()][c.getC()]).removeOccupant();
+                    c.setPos(c.getR()+1, c.getC());
+                    ((Tile)getCells()[c.getR()][c.getC()]).setOccupant(c);
+                } else {
+                    return false;
+                }
+                break;
+            case LEFT:
+                if (isOccupiableAndNotOccupiedWithCrate(c.getR(), c.getC() -1)){
+                    ((Tile)getCells()[c.getR()][c.getC()]).removeOccupant();
+                    c.setPos(c.getR(), c.getC()-1);
+                    ((Tile)getCells()[c.getR()][c.getC()]).setOccupant(c);
+                } else {
+                    return false;
+                }
+                break;
+            case RIGHT:
+                if (isOccupiableAndNotOccupiedWithCrate(c.getR(), c.getC() +1)){
+                    ((Tile)getCells()[c.getR()][c.getC()]).removeOccupant();
+                    c.setPos(c.getR(), c.getC()+1);
+                    ((Tile)getCells()[c.getR()][c.getC()]).setOccupant(c);
+                } else {
+                    return false;
+                }
+                break;
+        }
+        return true; // You may also modify this line.
     }
 
     private boolean isValid(int r, int c) {
@@ -113,7 +239,10 @@ public class Map {
      */
     public boolean isOccupiableAndNotOccupiedWithCrate(int r, int c) {
         //TODO
-        return false; // You may also modify this line.
+        if (!isValid(r,c)|| cells[r][c] instanceof Wall || !(((Tile) getCells()[r][c]).getOccupant().isPresent())) {
+            return false;
+        }
+        return true; // You may also modify this line.
     }
 
     public enum Direction {
