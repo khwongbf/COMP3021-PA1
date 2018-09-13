@@ -54,7 +54,7 @@ public class Map {
                     }
                 } else if (Character.isUpperCase(rep[i][j])){
                     cells[i][j] = new DestTile(rep[i][j]);
-                    destTiles.add(cells[i][j]);
+                    destTiles.add((DestTile)cells[i][j]);
                 } else if (Character.isLowerCase(rep[i][j])){
                     nextCrate = new Crate(i,j,rep[i][j]);
                     crates.add(nextCrate);
