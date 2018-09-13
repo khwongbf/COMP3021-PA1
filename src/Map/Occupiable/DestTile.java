@@ -4,6 +4,7 @@ import Map.Occupant.Crate;
 
 import java.nio.file.DirectoryStream;
 import java.util.function.Function;
+import java.lang.Object;
 
 /**
  * A destination tile. To win the game, we must push the crate with the corresponding ID onto this tile
@@ -24,6 +25,13 @@ public class DestTile extends Tile {
      */
     public boolean isCompleted() {
         //TODO
+        if (super.getOccupant().isPresent()){
+            if (super.getOccupant().get() instanceof Crate){
+                 if (Character.toLowerCase(destID) == ((Crate) super.getOccupant().get()).getID()){
+                     return true;
+                 }
+            }
+        }
         return false; // You may also modify this line.
     }
 
@@ -37,7 +45,9 @@ public class DestTile extends Tile {
     @Override
     public char getRepresentation() {
         //TODO
-        
-        return ' '; // You may also modify this line.
+        if (isCompleted()){
+            return super.getOccupant().get().getRepresentation();
+        }
+        return getDestID(); // You may also modify this line.
     }
 }

@@ -36,16 +36,14 @@ public class Map {
         //TODO
         cells = new Cell[rows][cols];
         Crate nextCrate;
-        Character currentChar = new Character(rep[0][0]);
         boolean playerInitialized = false;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                currentChar = rep[i][j];
-                if (currentChar.equals('#')){
+                if (rep[i][j] == '#'){
                     cells[i][j] = new Wall();
-                } else if (currentChar.equals('.')){
+                } else if (rep[i][j] == '.'){
                     cells[i][j] = new Tile();
-                } else if (currentChar.equals('@')){
+                } else if (rep[i][j] == '@'){
                     if (!playerInitialized){
                         player = new Player(i,j);
                         playerInitialized = true;
