@@ -25,7 +25,7 @@ public class Tile extends Cell implements Occupiable {
     @Override
     public Optional<Occupant> getOccupant() {
         //TODO
-        return null; // You may also modify this line.
+        return Optional.ofNullable(occupant); // You may also modify this line.
     }
 
     /**
@@ -35,6 +35,11 @@ public class Tile extends Cell implements Occupiable {
     @Override
     public char getRepresentation() {
         //TODO
-        return '.'; // You may also modify this line.
+        if (getOccupant().isPresent()){
+            return getOccupant().get().getRepresentation();
+        } else{
+            return '.';
+        }
+// You may also modify this line.
     }
 }
