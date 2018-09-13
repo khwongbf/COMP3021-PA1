@@ -51,7 +51,7 @@ public class Map {
                         cells[i][j] = new Tile();
                         ((Tile) cells[i][j]).setOccupant(player);
                     } else{
-                        throw new InvalidNumberOfPlayersException("");
+                        throw new InvalidNumberOfPlayersException("Invalid Number Of Players Exception occurred!");
                     }
                 } else if (Character.isUpperCase(rep[i][j])){
                     cells[i][j] = new DestTile(rep[i][j]);
@@ -62,7 +62,7 @@ public class Map {
                     cells[i][j] = new Tile();
                     ((Tile) cells[i][j]).setOccupant(nextCrate);
                 } else {
-                    throw new UnknownElementException("");
+                    throw new UnknownElementException("Unknown Element Exception occurred!");
                 }
             }
         }
@@ -239,7 +239,7 @@ public class Map {
      */
     public boolean isOccupiableAndNotOccupiedWithCrate(int r, int c) {
         //TODO
-        if (!isValid(r,c)|| cells[r][c] instanceof Wall || !(((Tile) getCells()[r][c]).getOccupant().isPresent())) {
+        if (!isValid(r,c)|| cells[r][c] instanceof Wall || (((Tile) getCells()[r][c]).getOccupant().isPresent())) {
             return false;
         }
         return true; // You may also modify this line.

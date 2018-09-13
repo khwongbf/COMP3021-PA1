@@ -27,7 +27,32 @@ public class Game {
      */
     public void loadMap(String filename) throws InvalidMapException {
         //TODO
-
+        try{
+            File readFile = new File(filename);
+            Scanner sc = new Scanner(readFile);
+            numRows = Integer.parseInt(sc.nextLine());
+            numCols = Integer.parseInt(sc.nextLine());
+            rep = new char[numRows][numCols];
+            String currentLine;
+            int currentRowIndex = 0;
+            while (sc.hasNextLine()){
+                currentLine = sc.nextLine();
+                for (int j = 0; j < currentLine.length(); j++){
+                    rep[currentRowIndex][j] = currentLine.charAt(j);
+                }
+                currentRowIndex++;
+            }
+            m = new Map();
+            m.initialize(numRows,numCols,rep);
+            sc.close();
+        } catch (FileNotFoundException e){
+            e.printStackTrace();
+            System.out.println("File not found!");
+        } catch (InvalidMapException e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        } finally {
+        }
     }
 
     /**
@@ -78,7 +103,27 @@ public class Game {
      */
     public boolean makeMove(char c) {
         //TODO
-        return false; // You may also modify this line.
+        switch (c){
+            case 'r':
+                try {
+                    m.initialize(numRows,numCols,rep);
+                } catch (InvalidMapException e){
+                    e.fillInStackTrace();
+                    return false;
+                } finally {}
+                return true;
+            case 'w':
+                return m.movePlayer(Map.Direction.UP);
+            case 's':
+                return m.movePlayer(Map.Direction.DOWN);
+            case 'a':
+                return m.movePlayer(Map.Direction.LEFT);
+            case 'd':
+                return m.movePlayer(Map.Direction.RIGHT);
+                default:
+                    return false;
+        }
+        // You may also modify this line.
     }
 
 
