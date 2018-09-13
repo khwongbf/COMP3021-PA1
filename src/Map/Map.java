@@ -11,7 +11,6 @@ import Map.Occupiable.Occupiable;
 import Map.Occupiable.Tile;
 
 import java.util.ArrayList;
-import java.lang.Object;
 
 /**
  * A class holding a the 2D array of cells, representing the world map
@@ -239,8 +238,12 @@ public class Map {
      */
     public boolean isOccupiableAndNotOccupiedWithCrate(int r, int c) {
         //TODO
-        if (!isValid(r,c)|| cells[r][c] instanceof Wall || (((Tile) getCells()[r][c]).getOccupant().isPresent())) {
+        if (!isValid(r,c)|| cells[r][c] instanceof Wall) {
             return false;
+        } else if (((Tile) getCells()[r][c]).getOccupant().isPresent()){
+            if ((((Tile) getCells()[r][c]).getOccupant().get() instanceof Crate)){
+                return false;
+            }
         }
         return true; // You may also modify this line.
     }

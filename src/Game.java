@@ -52,6 +52,8 @@ public class Game {
             e.printStackTrace();
             System.out.println(e.getMessage());
         } finally {
+            System.out.println(numRows);
+            System.out.println(numCols);
         }
     }
 
@@ -76,7 +78,22 @@ public class Game {
      */
     public boolean isDeadlocked() {
         //TODO
-        return false; // You may also modify this line.
+        boolean horizontal = true;
+        boolean vertical = true;
+        int unmovable = 0;
+        for(Crate crate: m.getCrates()){
+            if (m.isOccupiableAndNotOccupiedWithCrate(crate.getR()-1, crate.getC()) && m.isOccupiableAndNotOccupiedWithCrate(crate.getR()+1, crate.getC())){
+                vertical = false;
+            }
+            if (m.isOccupiableAndNotOccupiedWithCrate(crate.getR(), crate.getC() -1) && m.isOccupiableAndNotOccupiedWithCrate(crate.getR(),crate.getC() +1)){
+                horizontal = false;
+            }
+            if (!(vertical || horizontal)){
+                unmovable++;
+            }
+        }
+
+        return (unmovable == m.getCrates().size()); // You may also modify this line.
     }
 
     /**
