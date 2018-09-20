@@ -23,5 +23,11 @@ class DestTileTest {
         d.setOccupant(correctCrate);
         assertTrue(d.isCompleted());
     }
+    
+    @Test
+    void isCompletedFailure(){
+        d.setOccupant(wrongCrate);
+        assertFalse(d.isCompleted());
+    }
 
 }
