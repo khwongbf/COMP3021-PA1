@@ -22,4 +22,11 @@ class TileTest {
         assertTrue(t.getOccupant().isPresent());
         assertSame(crate, t.getOccupant().get());
     }
+    
+    @Test
+    void removeOccupantTest(){
+        t.setOccupant(crate);
+        t.removeOccupant();
+        assertFalse(t.getOccupant().isPresent());
+    }
 }
