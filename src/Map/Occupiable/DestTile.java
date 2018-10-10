@@ -45,7 +45,7 @@ public class DestTile extends Tile {
     @Override
     public char getRepresentation() {
         //TODO
-        if (isCompleted()){
+        if (super.getOccupant().isPresent()){
             return super.getOccupant().get().getRepresentation();
         }
         return getDestID(); // You may also modify this line.

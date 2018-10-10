@@ -238,10 +238,10 @@ public class Map {
      */
     public boolean isOccupiableAndNotOccupiedWithCrate(int r, int c) {
         //TODO
-        if (!isValid(r,c)|| cells[r][c] instanceof Wall) {
+        if (!isValid(r,c) || (this.getCells()[r][c] instanceof Wall)) {
             return false;
-        } else if (((Tile) getCells()[r][c]).getOccupant().isPresent()){
-            if ((((Tile) getCells()[r][c]).getOccupant().get() instanceof Crate)){
+        } else if (((Tile) this.getCells()[r][c]).getOccupant().isPresent()){
+            if ((((Tile) this.getCells()[r][c]).getOccupant().get() instanceof Crate)){
                 return false;
             }
         }
